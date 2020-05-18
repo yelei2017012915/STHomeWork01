@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.ui.theme" value="simple" />
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="listAll" class="cn.jbit.com.action.StudentAction">
+			<result name="success">jstlpage.jsp</result>
+		</action>
+		
+		
+		<action name="page" class="cn.jbit.com.action.StudentAction" method="pageList">
+			<result name="success">jstlpage.jsp</result>
+		</action>
+
+		<action name="studentAction" class="cn.jbit.com.action.StudentAction">
+			<param name="savePath">/upload</param>
+			<result name="success" type="redirectAction">page</result>
+			<result name="input">register.jsp</result>
+		</action>
+
+
+		<action name="StudentAction.pageList" class="cn.jbit.com.action.StudentAction"
+			method="pageList">
+			<result name="success">jstlpage.jsp</result>	
+		</action>
+		
+		<action name="StudentAction.delete" class="cn.jbit.com.action.StudentAction"
+			method="delete">
+			<result name="success" type="redirectAction">page</result>	
+		</action>
+		
+		<action name="findStuById" class="cn.jbit.com.action.StudentAction"
+			method="selectById">
+			<result name="success">update.jsp</result>	
+		</action>
+		
+			<action name="update" class="cn.jbit.com.action.StudentAction"
+			method="update">
+			<param name="savePath">/upload</param>
+			<result name="success" type="redirectAction">page</result>	
+			<result name="input">update.jsp</result>
+		</action>
+		
+	</package>
+</struts>
